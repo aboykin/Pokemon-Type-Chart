@@ -32,20 +32,20 @@ namespace PokeTypeChart
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.viewChartBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.type1Lbl = new System.Windows.Forms.Label();
-            this.type1Box = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.type2Lbl = new System.Windows.Forms.Label();
             this.type2Box = new System.Windows.Forms.ComboBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.type1Lbl = new System.Windows.Forms.Label();
+            this.type1Box = new System.Windows.Forms.ComboBox();
             this.enableDualTypeBtn = new System.Windows.Forms.Button();
             this.typeDetailBox = new System.Windows.Forms.RichTextBox();
             this.typeLbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,38 +110,6 @@ namespace PokeTypeChart
             this.tableLayoutPanel2.Size = new System.Drawing.Size(368, 64);
             this.tableLayoutPanel2.TabIndex = 36;
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.type1Lbl);
-            this.flowLayoutPanel1.Controls.Add(this.type1Box);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(171, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.tableLayoutPanel2.SetRowSpan(this.flowLayoutPanel1, 2);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(152, 27);
-            this.flowLayoutPanel1.TabIndex = 34;
-            // 
-            // type1Lbl
-            // 
-            this.type1Lbl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.type1Lbl.AutoSize = true;
-            this.type1Lbl.Location = new System.Drawing.Point(3, 7);
-            this.type1Lbl.Name = "type1Lbl";
-            this.type1Lbl.Size = new System.Drawing.Size(43, 13);
-            this.type1Lbl.TabIndex = 30;
-            this.type1Lbl.Text = "Type 1:";
-            this.type1Lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // type1Box
-            // 
-            this.type1Box.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.type1Box.FormattingEnabled = true;
-            this.type1Box.Location = new System.Drawing.Point(52, 3);
-            this.type1Box.Name = "type1Box";
-            this.type1Box.Size = new System.Drawing.Size(96, 21);
-            this.type1Box.TabIndex = 25;
-            this.type1Box.Text = "None";
-            this.type1Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.Controls.Add(this.type2Lbl);
@@ -166,14 +134,44 @@ namespace PokeTypeChart
             // type2Box
             // 
             this.type2Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.type2Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.type2Box.Enabled = false;
             this.type2Box.FormattingEnabled = true;
             this.type2Box.Location = new System.Drawing.Point(52, 3);
             this.type2Box.Name = "type2Box";
             this.type2Box.Size = new System.Drawing.Size(96, 21);
             this.type2Box.TabIndex = 29;
-            this.type2Box.Text = "None";
-            this.type2Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.type1Lbl);
+            this.flowLayoutPanel1.Controls.Add(this.type1Box);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(171, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.tableLayoutPanel2.SetRowSpan(this.flowLayoutPanel1, 2);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(152, 27);
+            this.flowLayoutPanel1.TabIndex = 34;
+            // 
+            // type1Lbl
+            // 
+            this.type1Lbl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.type1Lbl.AutoSize = true;
+            this.type1Lbl.Location = new System.Drawing.Point(3, 7);
+            this.type1Lbl.Name = "type1Lbl";
+            this.type1Lbl.Size = new System.Drawing.Size(43, 13);
+            this.type1Lbl.TabIndex = 30;
+            this.type1Lbl.Text = "Type 1:";
+            this.type1Lbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // type1Box
+            // 
+            this.type1Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.type1Box.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.type1Box.FormattingEnabled = true;
+            this.type1Box.Location = new System.Drawing.Point(52, 3);
+            this.type1Box.Name = "type1Box";
+            this.type1Box.Size = new System.Drawing.Size(96, 21);
+            this.type1Box.TabIndex = 25;
             // 
             // enableDualTypeBtn
             // 
@@ -238,10 +236,10 @@ namespace PokeTypeChart
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

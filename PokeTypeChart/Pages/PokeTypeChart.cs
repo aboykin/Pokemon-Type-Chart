@@ -107,7 +107,7 @@ namespace PokeTypeChart
         {
             //Declare and show ChartDisplay
             ChartDisplay cd = new ChartDisplay(typeHandler);
-            cd.Show();
+            cd.ShowDialog(this);
         }
     }
 }

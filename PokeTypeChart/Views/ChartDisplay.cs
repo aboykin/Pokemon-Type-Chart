@@ -19,10 +19,10 @@ namespace PokeTypeChart
         }
 
         //Set copy constructor to set DataGridView.Datasource to TypeChart
-        public ChartDisplay(TypeHandler typeDB) : this() 
+        public ChartDisplay(TypeHandler typeHandler) : this() 
         {
             //set Data
-            this.chartView.DataSource = typeDB.TypeChart;
+            this.chartView.DataSource = typeHandler.TypeChart.Chart;
         }
     }
 }

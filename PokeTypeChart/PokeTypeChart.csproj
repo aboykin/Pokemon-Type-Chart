@@ -48,25 +48,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\ChartDisplay.cs">
+    <Compile Include="Models\Effectiveness.cs" />
+    <Compile Include="Models\TypeChart.cs" />
+    <Compile Include="Views\ChartDisplay.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\ChartDisplay.Designer.cs">
+    <Compile Include="Views\ChartDisplay.Designer.cs">
       <DependentUpon>ChartDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
-    <Compile Include="Models\TypeHandler.cs" />
-    <Compile Include="Pages\PokeTypeChart.cs">
+    <Compile Include="Controllers\TypeHandler.cs" />
+    <Compile Include="Views\PokeTypeChart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\PokeTypeChart.Designer.cs">
+    <Compile Include="Views\PokeTypeChart.Designer.cs">
       <DependentUpon>PokeTypeChart.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Pages\ChartDisplay.resx">
+    <EmbeddedResource Include="Views\ChartDisplay.resx">
       <DependentUpon>ChartDisplay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\PokeTypeChart.resx">
+    <EmbeddedResource Include="Views\PokeTypeChart.resx">
       <DependentUpon>PokeTypeChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

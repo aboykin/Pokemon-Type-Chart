@@ -10,8 +10,7 @@ namespace PokeTypeChart.Models
     class TypeHandler
     {
         //Initialize 
-        public string Key { get; private set; }
-        public DataTable TypeChart { get; set; }
+        public TypeChart TypeChart { get; set; }
 
         //Declare property with backing field to set CSV file for handler
         //*Resets TypeChart when directory is added 
@@ -32,8 +31,12 @@ namespace PokeTypeChart.Models
         //Declare constructor
         public TypeHandler(string _csvFile)
         {
+            //Initialize new TypeChart
+            TypeChart = new TypeChart();
+            
             //Set CSV file
             CSVFile = _csvFile;
+            
         }
 
         //Create private function to generate TypeChart
@@ -50,7 +53,7 @@ namespace PokeTypeChart.Models
                     //Read in first row of csv and add as column headers
                     string[] headers = sr.ReadLine().Split(',');
                     //Set Key to type names under first column
-                    Key = headers[0];
+                    TypeChart.Key = headers[0];
                     //Add columns to DataTable
                     foreach (string header in headers)
                     {
@@ -83,7 +86,7 @@ namespace PokeTypeChart.Models
                 }
 
                 //Set PrimaryKey of table to DataColumn at Key index 
-                tc.PrimaryKey = new DataColumn[] { tc.Columns[Key] };
+                tc.PrimaryKey = new DataColumn[] { tc.Columns[TypeChart.Key] };
             }
             catch(FileNotFoundException e) 
             {
@@ -97,13 +100,13 @@ namespace PokeTypeChart.Models
         public void RefreshTypeChart() 
         {
             //If chart has been initialized, clear it
-            if (TypeChart != null)
+            if (TypeChart.Chart != null)
             {
-                TypeChart.Clear();
+                TypeChart.Chart.Clear();
             }
       
             //Load/reload TypeChart
-            TypeChart = GenerateTypeChart(CSVFile);
+            TypeChart.Chart = GenerateTypeChart(CSVFile);
         }
 
         //Declare function to return Dictionary containing information of select types
@@ -148,9 +151,9 @@ namespace PokeTypeChart.Models
             //For all rows in the chart...
             //...where computed values (single value for 1 type, valueA * valueB for dual type) match desired effectiveness...
             //...return those row names
-            List<string> retVal = (from DataRow r in TypeChart.AsEnumerable()
+            List<string> retVal = (from DataRow r in TypeChart.Chart.AsEnumerable()
                                 where (type2 == "None" ? (Convert.ToDouble(r[type1])) : (Convert.ToDouble(r[type1]) * Convert.ToDouble(r[type2]))) == effectiveness
-                                select r[Key].ToString()).ToList<string>();
+                                select r[TypeChart.Key].ToString()).ToList<string>();
 
             //Check and indicate if no types are returned from query
             retVal = CheckIfEmpty(retVal);
@@ -171,14 +174,14 @@ namespace PokeTypeChart.Models
         private List<string> QueryTypeStrengths(string type1, string type2)
         {
             //Query for single-type strengths
-            List<string> strengths = (from DataColumn c in TypeChart.Columns                      //for all columns...
-                                      where TypeChart.Rows.Find(type1)[c.ColumnName].Equals("2")   //...find the columns in this type's row that equal 2...
+            List<string> strengths = (from DataColumn c in TypeChart.Chart.Columns                      //for all columns...
+                                      where TypeChart.Chart.Rows.Find(type1)[c.ColumnName].Equals("2")   //...find the columns in this type's row that equal 2...
                                       select c.ColumnName).ToList<string>();
             //Query for 2nd type strengths if second type is selected
             if (type2 != "None")
             {
-                List<string> type2Strengths = (from DataColumn c in TypeChart.Columns                      //for all columns...
-                                           where TypeChart.Rows.Find(type2)[c.ColumnName].Equals("2")   //...find the columns in this type's row that equal 2...
+                List<string> type2Strengths = (from DataColumn c in TypeChart.Chart.Columns                      //for all columns...
+                                           where TypeChart.Chart.Rows.Find(type2)[c.ColumnName].Equals("2")   //...find the columns in this type's row that equal 2...
                                            select c.ColumnName).ToList<string>();                              //...and return the name of those columns
 
                 //Union strengths of two types
@@ -191,18 +194,5 @@ namespace PokeTypeChart.Models
             //return strengths list
             return strengths;
         }
-    
-        //Create struct to define effectiveness values
-        public struct Effectiveness 
-        {
-            //Define effectiveness values 
-            public const double DoubleResistance = 0.25;
-            public const double SingleResistance = 0.5;
-            public const double Immunity = 0;
-            public const double Normal = 1;
-            public const double SingleWeakness = 2;
-            public const double DoubleWeakness = 4;
-        }
-
     }
 }

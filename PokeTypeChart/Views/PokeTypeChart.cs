@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace PokeTypeChart
 {
-    public partial class PokeTypeForm : Form
+    partial class PokeTypeForm : Form
     {
 
         //intizalize and create type chart
-        TypeHandler typeHandler = new TypeHandler(@"Resources\typechart.csv");
+        public readonly TypeHandler typeHandler = new TypeHandler(@"Resources\typechart.csv");
 
         //initialize boolean flag to toggle for single and dual queries
         bool singleTypeQuery = true;
@@ -38,11 +38,11 @@ namespace PokeTypeChart
             }
 
             //Wire up combobox datasources of to TypeChart[Key] row names
-            type1Box.DataSource = typeHandler.TypeChart.AsEnumerable()
-                                    .Select(r => r.Field<string>(typeHandler.Key)).ToList();
+            type1Box.DataSource = typeHandler.TypeChart.Chart.AsEnumerable()
+                                    .Select(r => r.Field<string>(typeHandler.TypeChart.Key)).ToList();
 
-            type2Box.DataSource = typeHandler.TypeChart.AsEnumerable()
-                                    .Select(r => r.Field<string>(typeHandler.Key)).ToList();
+            type2Box.DataSource = typeHandler.TypeChart.Chart.AsEnumerable()
+                                    .Select(r => r.Field<string>(typeHandler.TypeChart.Key)).ToList();
 
             //Define custom EventHandlers
             //*so WinForms designer won't overwrite them in Designer class
